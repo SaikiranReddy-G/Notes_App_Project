@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.listView)
         dbHelper = DatabaseHelper(this)
 
-
+        // To refresh list
         refreshNotesList()
 
-
+        // Onclick listener to open NoteDetailActivity
         listView.setOnItemClickListener { _, _, position, _ ->
             val noteId = dbHelper.getAllNotes()[position].id
             val intent = Intent(this, NoteDetailActivity::class.java)
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
+        // Long Click listener to delete note
         listView.setOnItemLongClickListener { _, _, position, _ ->
             val noteId = dbHelper.getAllNotes()[position].id
             dbHelper.deleteNoteById(noteId)
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
+        // To add a new note
         findViewById<FloatingActionButton>(R.id.addNoteButton).setOnClickListener {
             startActivity(Intent(this, NoteDetailActivity::class.java))
         }

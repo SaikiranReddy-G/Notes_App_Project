@@ -25,28 +25,28 @@ class NoteDetailActivity : AppCompatActivity() {
         deleteButton = findViewById(R.id.deleteButton)
         dbHelper = DatabaseHelper(this)
 
-
+        // To check whether noteId is passed
         noteId = intent.getLongExtra("noteId", -1)
 
-
+        // To load note details
         if (noteId != -1L) {
             val note = dbHelper.getNoteById(noteId)
             titleEditText.setText(note?.title)
             contentEditText.setText(note?.content)
         }
 
-
+        // To save or update note
         saveButton.setOnClickListener {
             val title = titleEditText.text.toString()
             val content = contentEditText.text.toString()
 
             if (title.isNotEmpty() && content.isNotEmpty()) {
                 if (noteId != -1L) {
-
+                    // To update note
                     val updatedNote = Note(noteId, title, content)
                     dbHelper.updateNote(updatedNote)
                 } else {
-
+                    // To add new note
                     val newNote = Note(0, title, content)
                     dbHelper.addNote(newNote)
                 }
