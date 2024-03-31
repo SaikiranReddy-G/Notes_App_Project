@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Notes App Project</string>
+    <string name="title_hint">Enter title</string>
+    <string name="content_hint">Enter content</string>
+    <string name="save_button_label">Save</string>
+    <string name="add_note_button_description">Add Note</string>
+    <string name="delete_button_label">Delete</string>
+</resources>
